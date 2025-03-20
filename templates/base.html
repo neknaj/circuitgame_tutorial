@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <title>{{ title }}</title>
-    <!-- Optional: Import the Noto Serif JP font -->
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap">
     <style>
         :root {
@@ -120,3 +121,38 @@
     </main>
 </body>
 </html>
+<script>
+    // Register a custom language definition for "ncg"
+    hljs.registerLanguage('ncg', function(hljs) {
+        return {
+            // Define keywords
+            keywords: 'using module func test',
+            // Define the parts of the language that need highlighting
+            contains: [
+                // Comments using '//' style
+                hljs.COMMENT('//', '$'),
+                // Title for module and function names
+                {
+                    className: 'title',
+                    // This rule matches the name following "module" or "func"
+                    begin: /(?:module|func|test)\s+/,
+                    end: /(?:\s|\()/,
+                    excludeBegin: true
+                },
+                // Operators: ->, <-, and :
+                {
+                    className: 'operator',
+                    begin: /->|<-|:/
+                },
+                // Punctuation: braces, parentheses, semicolons, commas
+                {
+                    className: 'punctuation',
+                    begin: /[{}();,]/,
+                    relevance: 0
+                }
+            ]
+        };
+    });
+    // Initialize Highlight.js
+    hljs.highlightAll();
+</script>
