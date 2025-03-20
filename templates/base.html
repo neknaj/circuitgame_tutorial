@@ -86,7 +86,7 @@
         <ul>
             {% for item in nav_items %}
                 {% if not item.folder %}
-                    <li><a href="/{{ item.url }}">{{ item.title }}</a></li>
+                    <li><a href="/{{ item.url_base }}/{{ item.url }}">{{ item.title }}</a></li>
                 {% endif %}
             {% endfor %}
         </ul>
@@ -106,7 +106,7 @@
             <ul>
                 {% for item in nav_items %}
                     {% if item.folder and item.folder == folder %}
-                        <li><a href="/{{ item.url }}">{{ item.title }}</a></li>
+                        <li><a href="/{{ item.url_base }}/{{ item.url }}">{{ item.title }}</a></li>
                     {% endif %}
                 {% endfor %}
             </ul>

@@ -3,6 +3,7 @@ use std::fs::{read_to_string, write, create_dir_all};
 use std::path::{Path, PathBuf};
 use std::ffi::OsStr;
 
+use clap::builder::Str;
 use pulldown_cmark::{Parser as mdParser, Options, html};
 use tera::{Tera, Context};
 use clap::Parser;
@@ -13,13 +14,17 @@ use walkdir::WalkDir; // For recursive directory traversal
 struct Opt {
     /// Input folder path (contains .md files)
     /// Markdownファイルが入っている入力フォルダパス
-    #[arg(short = 'i', long = "input", default_value = "content")]
+    #[arg(short = 'i', long = "input", default_value = "./src")]
     input: String,
 
     /// Output folder path (where .html files will be written)
     /// 出力先フォルダパス（HTMLファイルを配置する場所）
-    #[arg(short = 'o', long = "output", default_value = "dist")]
+    #[arg(short = 'o', long = "output", default_value = "./dist")]
     output: String,
+
+    /// Url Base
+    #[arg(short = 'u', long = "url", default_value = "dist")]
+    url_base: String,
 }
 
 // A small struct for navigation items
@@ -29,6 +34,7 @@ struct NavItem {
     title: String,
     url: String,
     folder: Option<String>,
+    url_base: String,
 }
 
 fn main() -> Result<(), Box<dyn std::error::Error>> {
@@ -67,7 +73,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         let mut url_path = relative_path.to_path_buf();
         url_path.set_extension("html");
         let url = url_path.to_string_lossy().replace("\\", "/");
-        NavItem { title, url, folder }
+        NavItem { title, url, folder, url_base: opt.url_base.clone() }
     }).collect();
 
     // Process each .md file and generate corresponding .html in the output directory

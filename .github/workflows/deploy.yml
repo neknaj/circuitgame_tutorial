@@ -23,7 +23,7 @@ jobs:
         run: sed -i '/dist/d' .gitignore
 
       - name: Build
-        run: cargo run --manifest-path ./builder/Cargo.toml -- -i ./src -o ./dist
+        run: cargo run --manifest-path ./builder/Cargo.toml -- -u circuitgame_tutorial
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3

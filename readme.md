@@ -31,13 +31,7 @@ circuitgame_tutorial/
 
 2. チュートリアルのビルド:  
    ```bash
-   cargo run --manifest-path ./builder/Cargo.toml -- -i ./src -o ./dist
-   ```
-
-3. ローカルサーバーを建てる:  
-   なんでもいいので`./dist`がルートになるようにしてサーバーを建てて下さい  
-   ```bash
-   npx http-server dist
+   cargo run --manifest-path ./builder/Cargo.toml
    ```
 
 ## チュートリアルの編集
