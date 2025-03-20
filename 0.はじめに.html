@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <title>0.はじめに - NCG Tutorial</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap">
+    <style>
+        :root {
+            color-scheme: dark;
+            --background-color: #090c16;
+            --text-color: #ffffff;
+            --header-color: #0f1220;
+            --accent-color: #2e3451;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* Fixed header styling */
+        header {
+            background-color: var(--header-color);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Ensures header remains above other elements */
+            & * {
+                font-size: larger;
+                margin: 0;
+            }
+        }
+
+        /* Fixed navigation styling */
+        nav {
+            background-color: var(--accent-color);
+            width: 250px;
+            padding: 1rem;
+            position: fixed;
+            top: 60px; /* Adjust this value if header height changes */
+            bottom: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main content adjusted to avoid overlap with fixed header and nav */
+        main {
+            margin-left: 250px;
+            margin-top: 60px; /* Same as the header height */
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #cdd9e5;
+        }
+
+        a {
+            color: #a3bffa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background-color: #111320;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NCG (Neknaj Circuit Game) Tutorial</h1>
+    </header>
+
+    <nav>
+        <!-- ルートのファイル -->
+        <ul>
+            
+                
+            
+                
+                    <li><a href="/circuitgame_tutorial/0.はじめに.html">0.はじめに</a></li>
+                
+            
+                
+                    <li><a href="/circuitgame_tutorial/1.環境構築.html">1.環境構築</a></li>
+                
+            
+        </ul>
+
+        <!-- フォルダごとのグループ -->
+        
+        
+            
+                
+                    
+                
+            
+        
+            
+        
+            
+        
+
+        
+            <h3>1.全加算器</h3>
+            <ul>
+                
+                    
+                        <li><a href="/circuitgame_tutorial/1.全加算器&#x2F;1.論理回路の基礎.html">1.論理回路の基礎</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        
+    </nav>
+
+    <main>
+        <article>
+            <h2>はじめに</h2>
+<p>ようこそ、Neknaj Circuit Gameの世界へ。本チュートリアルは、論理回路の設計およびシミュレーションをテキスト記述によってシンプルに実現するためのガイドです。NCGは、専用のドメイン固有言語（DSL）を使用して回路を定義し、その記述をもとに回路の動作をシミュレーションします。従来の複雑なGUI操作から解放され、テキスト編集というシンプルな方法で直感的に回路設計が可能となっています。</p>
+<p>本ツールは、RustやTypeScriptといった最新のプログラミング技術を採用しており、高速かつ信頼性の高い動作を実現しています。CLIによる操作はもちろん、ウェブブラウザを使ってリアルタイムにシミュレーション結果を確認できるため、試行錯誤を繰り返しながら効率的に開発を進めることができます。チュートリアルでは、初めにNCGの概要と設計理念について詳しく解説し、その後、具体的なインストール手順や環境設定、基本的なDSLの使い方について丁寧に説明します。</p>
+<p>また、このツールは電子回路の教育や学習においても有用です。論理回路の基礎から高度な設計まで、実践的な例を交えながら解説することで、初心者でも安心して学習を進めることができます。あなたのアイデアを実現するための最初の一歩として、NCGの利用方法をしっかりと習得しましょう。</p>
+
+        </article>
+    </main>
+</body>
+</html>
+<script>
+    // Register a custom language definition for "ncg"
+    hljs.registerLanguage('ncg', function(hljs) {
+        return {
+            // Define keywords
+            keywords: 'using module func test',
+            // Define the parts of the language that need highlighting
+            contains: [
+                // Comments using '//' style
+                hljs.COMMENT('//', '$'),
+                // Title for module and function names
+                {
+                    className: 'title',
+                    // This rule matches the name following "module" or "func"
+                    begin: /(?:module|func|test)\s+/,
+                    end: /(?:\s|\()/,
+                    excludeBegin: true
+                },
+                // Operators: ->, <-, and :
+                {
+                    className: 'operator',
+                    begin: /->|<-|:/
+                },
+                // Punctuation: braces, parentheses, semicolons, commas
+                {
+                    className: 'punctuation',
+                    begin: /[{}();,]/,
+                    relevance: 0
+                }
+            ]
+        };
+    });
+    // Initialize Highlight.js
+    hljs.highlightAll();
+</script>

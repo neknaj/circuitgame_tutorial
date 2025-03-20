@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <title>1.環境構築 - NCG Tutorial</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap">
+    <style>
+        :root {
+            color-scheme: dark;
+            --background-color: #090c16;
+            --text-color: #ffffff;
+            --header-color: #0f1220;
+            --accent-color: #2e3451;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* Fixed header styling */
+        header {
+            background-color: var(--header-color);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Ensures header remains above other elements */
+            & * {
+                font-size: larger;
+                margin: 0;
+            }
+        }
+
+        /* Fixed navigation styling */
+        nav {
+            background-color: var(--accent-color);
+            width: 250px;
+            padding: 1rem;
+            position: fixed;
+            top: 60px; /* Adjust this value if header height changes */
+            bottom: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main content adjusted to avoid overlap with fixed header and nav */
+        main {
+            margin-left: 250px;
+            margin-top: 60px; /* Same as the header height */
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #cdd9e5;
+        }
+
+        a {
+            color: #a3bffa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background-color: #111320;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NCG (Neknaj Circuit Game) Tutorial</h1>
+    </header>
+
+    <nav>
+        <!-- ルートのファイル -->
+        <ul>
+            
+                
+            
+                
+                    <li><a href="/circuitgame_tutorial/0.はじめに.html">0.はじめに</a></li>
+                
+            
+                
+                    <li><a href="/circuitgame_tutorial/1.環境構築.html">1.環境構築</a></li>
+                
+            
+        </ul>
+
+        <!-- フォルダごとのグループ -->
+        
+        
+            
+                
+                    
+                
+            
+        
+            
+        
+            
+        
+
+        
+            <h3>1.全加算器</h3>
+            <ul>
+                
+                    
+                        <li><a href="/circuitgame_tutorial/1.全加算器&#x2F;1.論理回路の基礎.html">1.論理回路の基礎</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        
+    </nav>
+
+    <main>
+        <article>
+            <h1>環境構築</h1>
+<p>Neknaj Circuit Game（NCG）を使用するためには、適切な環境を構築する必要があります。本セクションでは、環境のセットアップ手順を詳しく説明します。これにより、スムーズに開発を開始できるようになります。</p>
+<h2>必要なソフトウェアのインストール</h2>
+<h3>推奨ツール</h3>
+<ul>
+<li><strong>VSCode</strong>: NCGコードの編集</li>
+<li><strong>NCG CLI</strong>: NCGのCLIでの処理</li>
+<li><strong>NCG Web</strong>: NCGのWebブラウザでのデバッグ</li>
+<li><strong>VSCode NCG 拡張機能</strong>: VSCodeでのNCGのシンタックスハイライト</li>
+</ul>
+<p>このチュートリアルは、これらを使用する前提で進めます。</p>
+<h3>VSCode</h3>
+<p>VSCodeがインストールされていない場合は <a href="https://code.visualstudio.com/download">こちら</a> からダウンロード・インストールしてください。</p>
+<h3>NCG CLI のインストール</h3>
+<p>NCG Webとの連携機能やトランスパイル機能を持ちます。</p>
+<p>以下のリンクにより、ビルド済みのバイナリを取得できます。
+自分の使っている環境に合わせてダウンロードしてください。</p>
+<p><a href="https://github.com/neknaj/circuitgame/releases">NCG CLI ダウンロード</a></p>
+<p>ダウンロードしたバイナリは、適切に <code>PATH</code> を通すなどして <code>ncg</code> コマンドとして使用できるようにしてください。</p>
+<h4>動作確認</h4>
+<p>以下のコマンドを実行し、コマンドラインのオプションの説明が表示されればインストール成功です。</p>
+<pre><code class="language-sh">ncg -h
+</code></pre>
+<h3>NCG Web の確認</h3>
+<p>GUIで回路の動作を確認することができます。
+NCG Webは <a href="https://neknaj.github.io/circuitgame/">こちら</a> をWebブラウザで開くだけで使用することができます。</p>
+<h3>VSCode NCG 拡張機能 のインストール</h3>
+<p>VSCodeでNCGのシンタックスハイライトなどを使用するための拡張機能があります。<br />
+<a href="https://github.com/neknaj/circuitgame-language/releases">NCG 拡張機能 ダウンロード</a></p>
+<p>VSCodeの拡張機能タブを開き、ミートボールメニューの中の<code>Install from VSIX</code>から拡張機能をインストールできます。</p>
+<h2>環境構築後の動作確認</h2>
+<p>環境が正しくセットアップされたかを確認するため、簡単な回路を作成し、シミュレーションを行います。</p>
+<h3>サンプルコード（NOT回路）</h3>
+<pre><code class="language-ncg">using nor:2-&gt;1;
+
+func not (x)-&gt;(y) {
+    y: nor &lt;- x x;
+}
+
+test not:1-&gt;1 {
+    t -&gt; f;
+    f -&gt; t;
+}
+</code></pre>
+<p>このコードを <code>not.ncg</code> という名前で保存し、以下のコマンドで実行します。</p>
+<pre><code class="language-sh">ncg not.ncg -i not.ncg -s true
+</code></pre>
+<p>すると、コンソールの最上部に <code>[info]:webSock Server running at ws://localhost:8080</code> のように表示されます。<br />
+<code>ws://localhost:8080</code> の部分がハイパーリンクになっているので、このリンクを開くとNCG Webが開きます。</p>
+<p>正しく実行され、期待通りの結果が得られれば、環境構築は完了です。</p>
+<hr />
+<p>これで、NCGの環境構築は完了です。次のステップでは、基本的なDSLの使い方について学び、回路設計を実践していきましょう！</p>
+
+        </article>
+    </main>
+</body>
+</html>
+<script>
+    // Register a custom language definition for "ncg"
+    hljs.registerLanguage('ncg', function(hljs) {
+        return {
+            // Define keywords
+            keywords: 'using module func test',
+            // Define the parts of the language that need highlighting
+            contains: [
+                // Comments using '//' style
+                hljs.COMMENT('//', '$'),
+                // Title for module and function names
+                {
+                    className: 'title',
+                    // This rule matches the name following "module" or "func"
+                    begin: /(?:module|func|test)\s+/,
+                    end: /(?:\s|\()/,
+                    excludeBegin: true
+                },
+                // Operators: ->, <-, and :
+                {
+                    className: 'operator',
+                    begin: /->|<-|:/
+                },
+                // Punctuation: braces, parentheses, semicolons, commas
+                {
+                    className: 'punctuation',
+                    begin: /[{}();,]/,
+                    relevance: 0
+                }
+            ]
+        };
+    });
+    // Initialize Highlight.js
+    hljs.highlightAll();
+</script>

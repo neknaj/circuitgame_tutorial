@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <title>1.全加算器&#x2F;1.論理回路の基礎 - NCG Tutorial</title>
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/vs2015.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap">
+    <style>
+        :root {
+            color-scheme: dark;
+            --background-color: #090c16;
+            --text-color: #ffffff;
+            --header-color: #0f1220;
+            --accent-color: #2e3451;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* Fixed header styling */
+        header {
+            background-color: var(--header-color);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Ensures header remains above other elements */
+            & * {
+                font-size: larger;
+                margin: 0;
+            }
+        }
+
+        /* Fixed navigation styling */
+        nav {
+            background-color: var(--accent-color);
+            width: 250px;
+            padding: 1rem;
+            position: fixed;
+            top: 60px; /* Adjust this value if header height changes */
+            bottom: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main content adjusted to avoid overlap with fixed header and nav */
+        main {
+            margin-left: 250px;
+            margin-top: 60px; /* Same as the header height */
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #cdd9e5;
+        }
+
+        a {
+            color: #a3bffa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background-color: #111320;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>NCG (Neknaj Circuit Game) Tutorial</h1>
+    </header>
+
+    <nav>
+        <!-- ルートのファイル -->
+        <ul>
+            
+                
+            
+                
+                    <li><a href="/circuitgame_tutorial/0.はじめに.html">0.はじめに</a></li>
+                
+            
+                
+                    <li><a href="/circuitgame_tutorial/1.環境構築.html">1.環境構築</a></li>
+                
+            
+        </ul>
+
+        <!-- フォルダごとのグループ -->
+        
+        
+            
+                
+                    
+                
+            
+        
+            
+        
+            
+        
+
+        
+            <h3>1.全加算器</h3>
+            <ul>
+                
+                    
+                        <li><a href="/circuitgame_tutorial/1.全加算器&#x2F;1.論理回路の基礎.html">1.論理回路の基礎</a></li>
+                    
+                
+                    
+                
+                    
+                
+            </ul>
+        
+    </nav>
+
+    <main>
+        <article>
+            <h1>論理回路の基礎</h1>
+<p>本セクションでは、論理回路の基礎について学びます。</p>
+
+        </article>
+    </main>
+</body>
+</html>
+<script>
+    // Register a custom language definition for "ncg"
+    hljs.registerLanguage('ncg', function(hljs) {
+        return {
+            // Define keywords
+            keywords: 'using module func test',
+            // Define the parts of the language that need highlighting
+            contains: [
+                // Comments using '//' style
+                hljs.COMMENT('//', '$'),
+                // Title for module and function names
+                {
+                    className: 'title',
+                    // This rule matches the name following "module" or "func"
+                    begin: /(?:module|func|test)\s+/,
+                    end: /(?:\s|\()/,
+                    excludeBegin: true
+                },
+                // Operators: ->, <-, and :
+                {
+                    className: 'operator',
+                    begin: /->|<-|:/
+                },
+                // Punctuation: braces, parentheses, semicolons, commas
+                {
+                    className: 'punctuation',
+                    begin: /[{}();,]/,
+                    relevance: 0
+                }
+            ]
+        };
+    });
+    // Initialize Highlight.js
+    hljs.highlightAll();
+</script>
