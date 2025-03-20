@@ -4,7 +4,7 @@ NCG (Neknaj Circuit Game) のチュートリアルサイトを生成するため
 
 ## サイト
 
-https://neknaj.github.io/circuitgame_tutorial で読むことが出来ます  
+https://neknaj.github.io/circuitgame_tutorial/0.はじめに.html で読むことが出来ます  
 
 ## 必要要件
 

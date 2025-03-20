@@ -97,7 +97,7 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
         // Tera用のコンテキストを準備
         let mut context = Context::new();
         context.insert("site_name", "NCG (Neknaj Circuit Game) Tutorial");
-        context.insert("title", &format!("{} - My Site", relative_path.with_extension("").to_string_lossy()));
+        context.insert("title", &format!("{} - NCG Tutorial", relative_path.with_extension("").to_string_lossy()));
         context.insert("content", &html_output);
         context.insert("nav_items", &nav_items);
 
