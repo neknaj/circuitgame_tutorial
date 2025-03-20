@@ -16,8 +16,8 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install Rust
-        run: curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -- -y
+      - name: Install rust
+        uses: dtolnay/rust-toolchain@stable
 
       - name: Temporarily remove dist from .gitignore
         run: sed -i '/dist/d' .gitignore
