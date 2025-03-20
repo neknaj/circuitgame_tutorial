@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <title>{{ title }}</title>
+    <!-- Optional: Import the Noto Serif JP font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200..900&display=swap">
+    <style>
+        :root {
+            color-scheme: dark;
+            --background-color: #090c16;
+            --text-color: #ffffff;
+            --header-color: #0f1220;
+            --accent-color: #2e3451;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: var(--background-color);
+            color: var(--text-color);
+            font-family: 'Noto Serif JP', serif;
+        }
+
+        /* Fixed header styling */
+        header {
+            background-color: var(--header-color);
+            padding: 1rem;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000; /* Ensures header remains above other elements */
+            & * {
+                font-size: larger;
+                margin: 0;
+            }
+        }
+
+        /* Fixed navigation styling */
+        nav {
+            background-color: var(--accent-color);
+            width: 250px;
+            padding: 1rem;
+            position: fixed;
+            top: 60px; /* Adjust this value if header height changes */
+            bottom: 0;
+            box-sizing: border-box;
+        }
+
+        /* Main content adjusted to avoid overlap with fixed header and nav */
+        main {
+            margin-left: 250px;
+            margin-top: 60px; /* Same as the header height */
+            padding: 1rem;
+            box-sizing: border-box;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            color: #cdd9e5;
+        }
+
+        a {
+            color: #a3bffa;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        article {
+            background-color: #111320;
+            padding: 1rem;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>{{ site_name }}</h1>
+    </header>
+
+    <nav>
+        <!-- ルートのファイル -->
+        <ul>
+            {% for item in nav_items %}
+                {% if not item.folder %}
+                    <li><a href="/dist/{{ item.url }}">{{ item.title }}</a></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+
+        <!-- フォルダごとのグループ -->
+        {% set folders = [] %}
+        {% for item in nav_items %}
+            {% if item.folder %}
+                {% if not item.folder in folders %}
+                    {% set_global folders = folders | concat(with=[item.folder]) %}
+                {% endif %}
+            {% endif %}
+        {% endfor %}
+
+        {% for folder in folders %}
+            <h3>{{ folder }}</h3>
+            <ul>
+                {% for item in nav_items %}
+                    {% if item.folder and item.folder == folder %}
+                        <li><a href="/dist/{{ item.url }}">{{ item.title }}</a></li>
+                    {% endif %}
+                {% endfor %}
+            </ul>
+        {% endfor %}
+    </nav>
+
+    <main>
+        <article>
+            {{ content | safe }}
+        </article>
+    </main>
+</body>
+</html>
